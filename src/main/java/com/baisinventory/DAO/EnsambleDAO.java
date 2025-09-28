@@ -4,11 +4,34 @@ import com.baisinventory.model.Ensamble;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.baisinventory.model.Ensamble;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnsambleDAO {
+    private Connection conn;
+
+    public EnsambleDAO() {
+        conn = Conexion.getConnection();
+    }
+
     public List<Ensamble> listarEnsambles() {
         List<Ensamble> lista = new ArrayList<>();
-        lista.add(new Ensamble(1, "Bicicleta", "Taller 1", 1));
-        lista.add(new Ensamble(2, "Silla", "Taller 2", 2));
+        String sql = "SELECT id, nombre, ubicacion, idUsuarioResponsable FROM ensamble";
+
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                lista.add(new Ensamble(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("ubicacion"),
+                        rs.getInt("idUsuarioResponsable")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return lista;
     }
 }
