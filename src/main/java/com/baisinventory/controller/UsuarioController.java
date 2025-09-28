@@ -1,13 +1,14 @@
 package com.baisinventory.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.baisinventory.DAO.RepuestoDAO;
+import com.baisinventory.DAO.UsuarioDAO;
+import com.google.gson.Gson;
 
-@RestController
 public class UsuarioController {
+    private UsuarioDAO dao = new UsuarioDAO();
+    private Gson gson = new Gson();
 
-    @GetMapping("/api/usuarios")
-    public String listarUsuarios() {
-        return "Lista de usuarios de ejemplo";
+    public String getUsuarios() {
+        return gson.toJson(dao.listarUsuarios());
     }
 }

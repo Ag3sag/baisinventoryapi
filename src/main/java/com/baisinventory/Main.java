@@ -1,11 +1,24 @@
 package com.baisinventory;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.baisinventory.controller.*;
 
-@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        UsuarioController uc = new UsuarioController();
+        RepuestoController rc = new RepuestoController();
+        EnsambleController ec = new EnsambleController();
+        ExportacionController exc = new ExportacionController();
+
+        System.out.println("Usuarios:");
+        System.out.println(uc.getUsuarios());
+
+        System.out.println("Repuestos:");
+        System.out.println(rc.getRepuestos());
+
+        System.out.println("Ensambles:");
+        System.out.println(ec.getEnsambles());
+
+        System.out.println("Exportaciones:");
+        System.out.println(exc.getExportaciones());
     }
 }
