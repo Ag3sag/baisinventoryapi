@@ -23,7 +23,7 @@ public class EnsambleDAO {
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 lista.add(new Ensamble(
-                        rs.getInt("id"),
+                        rs.getInt("id_ensamble"),
                         rs.getString("nombre"),
                         rs.getString("ubicacion"),
                         rs.getInt("id_usuario_responsable")

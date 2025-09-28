@@ -19,10 +19,10 @@ public class ExportacionDAO {
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 lista.add(new Exportacion(
-                        rs.getInt("id"),
+                        rs.getInt("id_exportacion"),
                         rs.getString("ubicacion"),
                         rs.getString("destino"),
-                        rs.getInt("idUsuario")
+                        rs.getInt("id_usuario_responsable")
                 ));
             }
         } catch (SQLException e) {
