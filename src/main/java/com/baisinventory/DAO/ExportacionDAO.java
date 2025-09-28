@@ -14,7 +14,7 @@ public class ExportacionDAO {
 
     public List<Exportacion> listarExportaciones() {
         List<Exportacion> lista = new ArrayList<>();
-        String sql = "SELECT id, ubicacion, destino, idUsuario FROM exportacion";
+        String sql = "SELECT id_exportacion, ubicacion, destino, id_usuario_responsable FROM exportacion";
 
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {

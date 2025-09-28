@@ -18,7 +18,7 @@ public class EnsambleDAO {
 
     public List<Ensamble> listarEnsambles() {
         List<Ensamble> lista = new ArrayList<>();
-        String sql = "SELECT id, nombre, ubicacion, idUsuarioResponsable FROM ensamble";
+        String sql = "SELECT id_ensamble, nombre, ubicacion, id_usuario_responsable FROM ensamble";
 
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
@@ -26,7 +26,7 @@ public class EnsambleDAO {
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("ubicacion"),
-                        rs.getInt("idUsuarioResponsable")
+                        rs.getInt("id_usuario_responsable")
                 ));
             }
         } catch (SQLException e) {
